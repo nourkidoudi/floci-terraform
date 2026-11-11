@@ -1,0 +1,15 @@
+name: IaC scan
+
+on: [push, pull_request]
+
+jobs:
+  trivy-config:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Scan IaC avec Trivy (bloquant)
+        run: |
+          docker run --rm -v "$PWD/terraform-starter:/tf" aquasec/trivy:latest config \
+            --exit-code 1 --severity HIGH,CRITICAL \
+            --skip-dirs /tf/.terraform /tf

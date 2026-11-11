@@ -1,0 +1,12 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+tfplan
+*.tfplan
+node_modules/
+awscliv2.zip
+aws/
+out.json
+*.zip
+tofu-copy/
+.env
